@@ -36,14 +36,14 @@ for point in points:
     )
 
 darkhadronZ2filter = cms.EDFilter("MCParticleModuloFilter",
-    moduleLabel = cms.InputTag('generator','unsmeared'),
+    moduleLabel = cms.InputTag('generator'),
     particleIDs = cms.vint32(51,53),
     multipleOf = cms.uint32(4),
     absID = cms.bool(True),
 )
 
 darkquarkFilter = cms.EDFilter("MCParticleModuloFilter",
-    moduleLabel = cms.InputTag('generator','unsmeared'),
+    moduleLabel = cms.InputTag('generator'),
     particleIDs = cms.vint32(4900101),
     multipleOf = cms.uint32(2),
     absID = cms.bool(True),
