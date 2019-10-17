@@ -103,6 +103,7 @@ import FWCore.ParameterSet.Config as cms
 
 from Configuration.Generator.Pythia8CommonSettings_cfi import *
 from {0} import * 
+from Configuration.Generator.PSweightsPythia.PythiaPSweightsSettings_cfi import *
 
 generator = cms.EDFilter("Pythia8GeneratorFilter",
     maxEventsToPrint = cms.untracked.int32(1),
@@ -160,10 +161,12 @@ for point in points:
     basePythiaParameters = cms.PSet(
         pythia8CommonSettingsBlock, 
         {0},
+        pythia8PSweightsSettingsBlock,
         processParameters = cms.vstring(point['processParameters']),
         parameterSets = cms.vstring(
             'pythia8CommonSettings',
             '{1}',
+            'pythia8PSweightsSettings',
             'processParameters',
         )
     )
