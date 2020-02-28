@@ -211,8 +211,9 @@ make_gridpack () {
         do
           #get needed BSM model
           if [[ $model = *[!\ ]* ]]; then
-            echo "Loading extra model $model"
-            wget --no-check-certificate https://cms-project-generators.web.cern.ch/cms-project-generators/$model	
+            echo "Loading extra model $model from $CARDSDIR"
+            cp $CARDSDIR/$model .
+            #wget --no-check-certificate https://cms-project-generators.web.cern.ch/cms-project-generators/$model	
             cd models
             if [[ $model == *".zip"* ]]; then
               unzip ../$model
