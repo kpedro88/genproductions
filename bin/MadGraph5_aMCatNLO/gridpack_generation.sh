@@ -89,9 +89,9 @@ make_gridpack () {
     # where to find the madgraph tarred distribution
     MGBASEDIR=mgbasedir
     
-    MG_EXT=".zip"
+    MG_EXT=".tar.gz"
     MG=MG5_aMC_v2_5_6_patch_int_signal$MG_EXT
-    MGSOURCE="https://www.dropbox.com/s/ocl75w4o7bpnv8x/MG5_aMC_v2_5_6_patch_int_signal.zip?dl=1"
+    MGSOURCE=root://cmseos.fnal.gov//store/user/pedrok/SVJ2017/${MG}
     
     MGBASEDIRORIG=$(echo ${MG%$MG_EXT} | tr "." "_")
     isscratchspace=0
@@ -127,9 +127,8 @@ make_gridpack () {
       #############################################
       #Copy, Unzip and Delete the MadGraph tarball#
       #############################################
-      wget --no-check-certificate -O $MG "${MGSOURCE}"
-#      tar xzf ${MG}
-      unzip -q ${MG}
+      xrdcp -f -s $MGSOURCE .
+      tar xzf ${MG}
       rm "$MG"
     
       #############################################
