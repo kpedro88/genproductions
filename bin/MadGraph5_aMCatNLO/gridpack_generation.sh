@@ -136,7 +136,7 @@ make_gridpack () {
       #############################################
     
       cd $MGBASEDIRORIG
-      cat $PRODHOME/patches/*.patch | patch -p1
+#      cat $PRODHOME/patches/*.patch | patch -p1
       cp -r $PRODHOME/PLUGIN/CMS_CLUSTER/ PLUGIN/ 
       # Intended for expert use only!
       if ls $CARDSDIR/${name}*.patch; then
