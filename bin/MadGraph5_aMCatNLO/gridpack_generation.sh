@@ -479,7 +479,11 @@ make_gridpack () {
       echo "starting LO mode"
     
       echo "done" > makegrid.dat
-      echo "set gridpack True" >> makegrid.dat
+      if [ -n "$NO_GRIDPACK" ]; then
+        echo "set gridpack False" >> makegrid.dat
+      else
+        echo "set gridpack True" >> makegrid.dat
+      fi
       if [ -e $CARDSDIR/${name}_customizecards.dat ]; then
               cat $CARDSDIR/${name}_customizecards.dat >> makegrid.dat
               echo "" >> makegrid.dat
