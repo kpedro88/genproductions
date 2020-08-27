@@ -599,11 +599,20 @@ queue=${3}
 # processing options
 jobstep=${4}
 
+if [[ `uname -r` == *"el6"* ]]; then
+	SLC_VERSION="slc6"
+elif [[ `uname -r` == *"el7"* ]]; then
+	SLC_VERSION="slc7"
+else
+	echo "WARNING::Unknown SLC version. Defaulting to SLC6."
+	SLC_VERSION="slc6"
+fi
+
 if [ -n "$5" ]
   then
     scram_arch=${5}
   else
-    scram_arch=slc6_amd64_gcc630 #slc6_amd64_gcc481
+    scram_arch=${SLC_VERSION}_amd64_gcc630 #slc6_amd64_gcc481
 fi
 
 # Require OS and scram_arch to be consistent
